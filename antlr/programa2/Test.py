@@ -1,7 +1,12 @@
 from antlr4 import *
 from ExprLexer import ExprLexer
+import sys
 
-lexer = ExprLexer(InputStream(input("?> ")))
+#leer archivos
+input_stream = FileStream(sys.argv[1])
+
+#terminal
+lexer = ExprLexer(input_stream)
 
 tokens = CommonTokenStream(lexer)
 tokens.fill()
