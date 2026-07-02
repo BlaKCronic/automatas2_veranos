@@ -1,0 +1,10 @@
+IF=1
+L_PAREN=2
+R_PAREN=3
+ID=4
+MAYOR=5
+NUMBER=6
+WS=7
+'('=2
+')'=3
+'>'=5
