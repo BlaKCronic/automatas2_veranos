@@ -4,6 +4,6 @@ root: expr EOF;
 
 expr: EOF;
 
-NUM: [0-9]+;
-MAS: '+';
+PRINT: [Pp][Rr][Ii][Nn][Tt];
+CADENA: '"' ~["\r\n]* '"';
 WS: [ \t\r\n]+ -> skip;
