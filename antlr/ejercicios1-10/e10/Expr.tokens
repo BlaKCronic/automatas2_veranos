@@ -1,0 +1,7 @@
+PRINT=1
+L_PAREN=2
+R_PAREN=3
+CADENA=4
+WS=5
+'('=2
+')'=3

@@ -1,0 +1,1 @@
+INT total = 100
