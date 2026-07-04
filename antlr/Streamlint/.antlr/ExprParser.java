@@ -1,4 +1,4 @@
-// Generated from c:/Users/100204924/Documents/tec/veranos/automatas2/clases/7B_clases_verano/Streamlint/Expr.g4 by ANTLR 4.13.1
+// Generated from c:/Users/100204924/Documents/tec/veranos/automatas2/git_automatas/antlr/Streamlint/Expr.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
