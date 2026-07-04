@@ -1,9 +1,46 @@
 grammar Expr;
 
-root: expr EOF ;
+// ----------------------------------------------------------------------
+// Regla inicial del parser (se conserva para que ANTLR genere el parser).
+// El analizador lexico solo usa el lexer, pero mantenemos una regla raiz
+// para conservar la estructura del proyecto.
+// ----------------------------------------------------------------------
+programa: elemento* EOF ;
 
-expr: NUM | IDF ;
+elemento
+    : PUBLIC | CLASS | STATIC | VOID | INT
+    | IDENTIFICADOR | ENTERO | CADENA
+    | MAS | IGUAL
+    | PAR_IZQ | PAR_DER | LLAVE_IZQ | LLAVE_DER
+    | COR_IZQ | COR_DER | PUNTO_COMA | PUNTO | COMA
+    ;
 
-NUM: [0-9]+ ;
-IDF: [a-zA-Z]+ ;
-WS: [ \t\r\n]+ -> skip ;
+// ---------- Palabras reservadas ----------
+PUBLIC : 'public' ;
+CLASS  : 'class' ;
+STATIC : 'static' ;
+VOID   : 'void' ;
+INT    : 'int' ;
+
+// ---------- Operadores ----------
+MAS   : '+' ;
+IGUAL : '=' ;
+
+// ---------- Simbolos ----------
+PAR_IZQ    : '(' ;
+PAR_DER    : ')' ;
+LLAVE_IZQ  : '{' ;
+LLAVE_DER  : '}' ;
+COR_IZQ    : '[' ;
+COR_DER    : ']' ;
+PUNTO_COMA : ';' ;
+PUNTO      : '.' ;
+COMA       : ',' ;
+
+// ---------- Literales e identificadores ----------
+ENTERO        : [0-9]+ ;
+CADENA        : '"' (~["\r\n])* '"' ;
+IDENTIFICADOR : [a-zA-Z_] [a-zA-Z0-9_]* ;
+
+// ---------- Espacios en blanco (ignorados) ----------
+WS : [ \t\r\n]+ -> skip ;

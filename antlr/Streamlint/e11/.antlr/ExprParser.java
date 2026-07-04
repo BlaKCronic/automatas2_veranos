@@ -16,24 +16,30 @@ public class ExprParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		NUM=1, IDF=2, WS=3;
+		PUBLIC=1, CLASS=2, STATIC=3, VOID=4, INT=5, MAS=6, IGUAL=7, PAR_IZQ=8, 
+		PAR_DER=9, LLAVE_IZQ=10, LLAVE_DER=11, COR_IZQ=12, COR_DER=13, PUNTO_COMA=14, 
+		PUNTO=15, COMA=16, ENTERO=17, CADENA=18, IDENTIFICADOR=19, WS=20;
 	public static final int
-		RULE_root = 0, RULE_expr = 1;
+		RULE_programa = 0, RULE_elemento = 1;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"root", "expr"
+			"programa", "elemento"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
+			null, "'public'", "'class'", "'static'", "'void'", "'int'", "'+'", "'='", 
+			"'('", "')'", "'{'", "'}'", "'['", "']'", "';'", "'.'", "','"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "NUM", "IDF", "WS"
+			null, "PUBLIC", "CLASS", "STATIC", "VOID", "INT", "MAS", "IGUAL", "PAR_IZQ", 
+			"PAR_DER", "LLAVE_IZQ", "LLAVE_DER", "COR_IZQ", "COR_DER", "PUNTO_COMA", 
+			"PUNTO", "COMA", "ENTERO", "CADENA", "IDENTIFICADOR", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -88,26 +94,42 @@ public class ExprParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class RootContext extends ParserRuleContext {
-		public ExprContext expr() {
-			return getRuleContext(ExprContext.class,0);
-		}
+	public static class ProgramaContext extends ParserRuleContext {
 		public TerminalNode EOF() { return getToken(ExprParser.EOF, 0); }
-		public RootContext(ParserRuleContext parent, int invokingState) {
+		public List<ElementoContext> elemento() {
+			return getRuleContexts(ElementoContext.class);
+		}
+		public ElementoContext elemento(int i) {
+			return getRuleContext(ElementoContext.class,i);
+		}
+		public ProgramaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_root; }
+		@Override public int getRuleIndex() { return RULE_programa; }
 	}
 
-	public final RootContext root() throws RecognitionException {
-		RootContext _localctx = new RootContext(_ctx, getState());
-		enterRule(_localctx, 0, RULE_root);
+	public final ProgramaContext programa() throws RecognitionException {
+		ProgramaContext _localctx = new ProgramaContext(_ctx, getState());
+		enterRule(_localctx, 0, RULE_programa);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(4);
-			expr();
-			setState(5);
+			setState(7);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 1048574L) != 0)) {
+				{
+				{
+				setState(4);
+				elemento();
+				}
+				}
+				setState(9);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
+			setState(10);
 			match(EOF);
 			}
 		}
@@ -123,25 +145,42 @@ public class ExprParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class ExprContext extends ParserRuleContext {
-		public TerminalNode NUM() { return getToken(ExprParser.NUM, 0); }
-		public TerminalNode IDF() { return getToken(ExprParser.IDF, 0); }
-		public ExprContext(ParserRuleContext parent, int invokingState) {
+	public static class ElementoContext extends ParserRuleContext {
+		public TerminalNode PUBLIC() { return getToken(ExprParser.PUBLIC, 0); }
+		public TerminalNode CLASS() { return getToken(ExprParser.CLASS, 0); }
+		public TerminalNode STATIC() { return getToken(ExprParser.STATIC, 0); }
+		public TerminalNode VOID() { return getToken(ExprParser.VOID, 0); }
+		public TerminalNode INT() { return getToken(ExprParser.INT, 0); }
+		public TerminalNode IDENTIFICADOR() { return getToken(ExprParser.IDENTIFICADOR, 0); }
+		public TerminalNode ENTERO() { return getToken(ExprParser.ENTERO, 0); }
+		public TerminalNode CADENA() { return getToken(ExprParser.CADENA, 0); }
+		public TerminalNode MAS() { return getToken(ExprParser.MAS, 0); }
+		public TerminalNode IGUAL() { return getToken(ExprParser.IGUAL, 0); }
+		public TerminalNode PAR_IZQ() { return getToken(ExprParser.PAR_IZQ, 0); }
+		public TerminalNode PAR_DER() { return getToken(ExprParser.PAR_DER, 0); }
+		public TerminalNode LLAVE_IZQ() { return getToken(ExprParser.LLAVE_IZQ, 0); }
+		public TerminalNode LLAVE_DER() { return getToken(ExprParser.LLAVE_DER, 0); }
+		public TerminalNode COR_IZQ() { return getToken(ExprParser.COR_IZQ, 0); }
+		public TerminalNode COR_DER() { return getToken(ExprParser.COR_DER, 0); }
+		public TerminalNode PUNTO_COMA() { return getToken(ExprParser.PUNTO_COMA, 0); }
+		public TerminalNode PUNTO() { return getToken(ExprParser.PUNTO, 0); }
+		public TerminalNode COMA() { return getToken(ExprParser.COMA, 0); }
+		public ElementoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_expr; }
+		@Override public int getRuleIndex() { return RULE_elemento; }
 	}
 
-	public final ExprContext expr() throws RecognitionException {
-		ExprContext _localctx = new ExprContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_expr);
+	public final ElementoContext elemento() throws RecognitionException {
+		ElementoContext _localctx = new ElementoContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_elemento);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(7);
+			setState(12);
 			_la = _input.LA(1);
-			if ( !(_la==NUM || _la==IDF) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 1048574L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -163,13 +202,16 @@ public class ExprParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u0003\n\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0001"+
-		"\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0000"+
-		"\u0000\u0002\u0000\u0002\u0000\u0001\u0001\u0000\u0001\u0002\u0007\u0000"+
-		"\u0004\u0001\u0000\u0000\u0000\u0002\u0007\u0001\u0000\u0000\u0000\u0004"+
-		"\u0005\u0003\u0002\u0001\u0000\u0005\u0006\u0005\u0000\u0000\u0001\u0006"+
-		"\u0001\u0001\u0000\u0000\u0000\u0007\b\u0007\u0000\u0000\u0000\b\u0003"+
-		"\u0001\u0000\u0000\u0000\u0000";
+		"\u0004\u0001\u0014\u000f\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
+		"\u0001\u0000\u0005\u0000\u0006\b\u0000\n\u0000\f\u0000\t\t\u0000\u0001"+
+		"\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0000\u0000\u0002"+
+		"\u0000\u0002\u0000\u0001\u0001\u0000\u0001\u0013\r\u0000\u0007\u0001\u0000"+
+		"\u0000\u0000\u0002\f\u0001\u0000\u0000\u0000\u0004\u0006\u0003\u0002\u0001"+
+		"\u0000\u0005\u0004\u0001\u0000\u0000\u0000\u0006\t\u0001\u0000\u0000\u0000"+
+		"\u0007\u0005\u0001\u0000\u0000\u0000\u0007\b\u0001\u0000\u0000\u0000\b"+
+		"\n\u0001\u0000\u0000\u0000\t\u0007\u0001\u0000\u0000\u0000\n\u000b\u0005"+
+		"\u0000\u0000\u0001\u000b\u0001\u0001\u0000\u0000\u0000\f\r\u0007\u0000"+
+		"\u0000\u0000\r\u0003\u0001\u0000\u0000\u0000\u0001\u0007";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
