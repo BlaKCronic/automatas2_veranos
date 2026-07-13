@@ -1,4 +1,4 @@
-// Generated from c:/Users/100204924/Documents/tec/veranos/automatas2/git_automatas/antlr/competencia3/e1/Expr.g4 by ANTLR 4.13.1
+// Generated from c:/Users/100204924/Documents/tec/veranos/automatas2/git_automatas/antlr/competencia3/e2/Expr.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -16,7 +16,7 @@ public class ExprParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		MAS=1, NUM=2, WS=3;
+		MENOS=1, NUM=2, WS=3;
 	public static final int
 		RULE_root = 0, RULE_expr = 1;
 	private static String[] makeRuleNames() {
@@ -28,13 +28,13 @@ public class ExprParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'+'"
+			null, "'-'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "MAS", "NUM", "WS"
+			null, "MENOS", "NUM", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -132,7 +132,7 @@ public class ExprParser extends Parser {
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TerminalNode MAS() { return getToken(ExprParser.MAS, 0); }
+		public TerminalNode MENOS() { return getToken(ExprParser.MENOS, 0); }
 		public ExprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -173,7 +173,7 @@ public class ExprParser extends Parser {
 					setState(10);
 					if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
 					setState(11);
-					match(MAS);
+					match(MENOS);
 					setState(12);
 					expr(3);
 					}

@@ -1,0 +1,4 @@
+PRINT=1
+STRING=2
+WS=3
+'print'=1

@@ -1,4 +1,4 @@
-// Generated from c:/Users/100204924/Documents/tec/veranos/automatas2/git_automatas/antlr/competencia3/e1/Expr.g4 by ANTLR 4.13.1
+// Generated from c:/Users/100204924/Documents/tec/veranos/automatas2/git_automatas/antlr/competencia3/e2/Expr.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -16,7 +16,7 @@ public class ExprLexer extends Lexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		MAS=1, NUM=2, WS=3;
+		MENOS=1, NUM=2, WS=3;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 	};
@@ -27,20 +27,20 @@ public class ExprLexer extends Lexer {
 
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"MAS", "NUM", "WS"
+			"MENOS", "NUM", "WS"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'+'"
+			null, "'-'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "MAS", "NUM", "WS"
+			null, "MENOS", "NUM", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -110,7 +110,7 @@ public class ExprLexer extends Lexer {
 		"\u0001\u000009\u0003\u0000\t\n\r\r  \u0016\u0000\u0001\u0001\u0000\u0000"+
 		"\u0000\u0000\u0003\u0001\u0000\u0000\u0000\u0000\u0005\u0001\u0000\u0000"+
 		"\u0000\u0001\u0007\u0001\u0000\u0000\u0000\u0003\n\u0001\u0000\u0000\u0000"+
-		"\u0005\u000f\u0001\u0000\u0000\u0000\u0007\b\u0005+\u0000\u0000\b\u0002"+
+		"\u0005\u000f\u0001\u0000\u0000\u0000\u0007\b\u0005-\u0000\u0000\b\u0002"+
 		"\u0001\u0000\u0000\u0000\t\u000b\u0007\u0000\u0000\u0000\n\t\u0001\u0000"+
 		"\u0000\u0000\u000b\f\u0001\u0000\u0000\u0000\f\n\u0001\u0000\u0000\u0000"+
 		"\f\r\u0001\u0000\u0000\u0000\r\u0004\u0001\u0000\u0000\u0000\u000e\u0010"+

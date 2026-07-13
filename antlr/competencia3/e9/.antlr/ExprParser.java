@@ -1,4 +1,4 @@
-// Generated from c:/Users/100204924/Documents/tec/veranos/automatas2/git_automatas/antlr/competencia3/e1/Expr.g4 by ANTLR 4.13.1
+// Generated from c:/Users/100204924/Documents/tec/veranos/automatas2/git_automatas/antlr/competencia3/e9/Expr.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -16,25 +16,25 @@ public class ExprParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		MAS=1, NUM=2, WS=3;
+		T__0=1, T__1=2, IF=3, OP=4, ID=5, NUM=6, WS=7;
 	public static final int
-		RULE_root = 0, RULE_expr = 1;
+		RULE_root = 0, RULE_ifStat = 1, RULE_comp = 2;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"root", "expr"
+			"root", "ifStat", "comp"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'+'"
+			null, "'('", "')'", "'if'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "MAS", "NUM", "WS"
+			null, null, null, "IF", "OP", "ID", "NUM", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -90,8 +90,8 @@ public class ExprParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class RootContext extends ParserRuleContext {
-		public ExprContext expr() {
-			return getRuleContext(ExprContext.class,0);
+		public IfStatContext ifStat() {
+			return getRuleContext(IfStatContext.class,0);
 		}
 		public TerminalNode EOF() { return getToken(ExprParser.EOF, 0); }
 		public RootContext(ParserRuleContext parent, int invokingState) {
@@ -106,9 +106,9 @@ public class ExprParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(4);
-			expr(0);
-			setState(5);
+			setState(6);
+			ifStat();
+			setState(7);
 			match(EOF);
 			}
 		}
@@ -124,65 +124,31 @@ public class ExprParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class ExprContext extends ParserRuleContext {
-		public TerminalNode NUM() { return getToken(ExprParser.NUM, 0); }
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
+	public static class IfStatContext extends ParserRuleContext {
+		public TerminalNode IF() { return getToken(ExprParser.IF, 0); }
+		public CompContext comp() {
+			return getRuleContext(CompContext.class,0);
 		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public TerminalNode MAS() { return getToken(ExprParser.MAS, 0); }
-		public ExprContext(ParserRuleContext parent, int invokingState) {
+		public IfStatContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_expr; }
+		@Override public int getRuleIndex() { return RULE_ifStat; }
 	}
 
-	public final ExprContext expr() throws RecognitionException {
-		return expr(0);
-	}
-
-	private ExprContext expr(int _p) throws RecognitionException {
-		ParserRuleContext _parentctx = _ctx;
-		int _parentState = getState();
-		ExprContext _localctx = new ExprContext(_ctx, _parentState);
-		ExprContext _prevctx = _localctx;
-		int _startState = 2;
-		enterRecursionRule(_localctx, 2, RULE_expr, _p);
+	public final IfStatContext ifStat() throws RecognitionException {
+		IfStatContext _localctx = new IfStatContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_ifStat);
 		try {
-			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			{
-			setState(8);
-			match(NUM);
-			}
-			_ctx.stop = _input.LT(-1);
-			setState(15);
-			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
-					if ( _parseListeners!=null ) triggerExitRuleEvent();
-					_prevctx = _localctx;
-					{
-					{
-					_localctx = new ExprContext(_parentctx, _parentState);
-					pushNewRecursionContext(_localctx, _startState, RULE_expr);
-					setState(10);
-					if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-					setState(11);
-					match(MAS);
-					setState(12);
-					expr(3);
-					}
-					} 
-				}
-				setState(17);
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
-			}
+			setState(9);
+			match(IF);
+			setState(10);
+			match(T__0);
+			setState(11);
+			comp();
+			setState(12);
+			match(T__1);
 			}
 		}
 		catch (RecognitionException re) {
@@ -191,40 +157,60 @@ public class ExprParser extends Parser {
 			_errHandler.recover(this, re);
 		}
 		finally {
-			unrollRecursionContexts(_parentctx);
+			exitRule();
 		}
 		return _localctx;
 	}
 
-	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
-		switch (ruleIndex) {
-		case 1:
-			return expr_sempred((ExprContext)_localctx, predIndex);
+	@SuppressWarnings("CheckReturnValue")
+	public static class CompContext extends ParserRuleContext {
+		public TerminalNode ID() { return getToken(ExprParser.ID, 0); }
+		public TerminalNode OP() { return getToken(ExprParser.OP, 0); }
+		public TerminalNode NUM() { return getToken(ExprParser.NUM, 0); }
+		public CompContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
-		return true;
+		@Override public int getRuleIndex() { return RULE_comp; }
 	}
-	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
-		switch (predIndex) {
-		case 0:
-			return precpred(_ctx, 2);
+
+	public final CompContext comp() throws RecognitionException {
+		CompContext _localctx = new CompContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_comp);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(14);
+			match(ID);
+			setState(15);
+			match(OP);
+			setState(16);
+			match(NUM);
+			}
 		}
-		return true;
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u0003\u0013\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
-		"\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0005\u0001\u000e\b\u0001\n\u0001"+
-		"\f\u0001\u0011\t\u0001\u0001\u0001\u0000\u0001\u0002\u0002\u0000\u0002"+
-		"\u0000\u0000\u0011\u0000\u0004\u0001\u0000\u0000\u0000\u0002\u0007\u0001"+
-		"\u0000\u0000\u0000\u0004\u0005\u0003\u0002\u0001\u0000\u0005\u0006\u0005"+
-		"\u0000\u0000\u0001\u0006\u0001\u0001\u0000\u0000\u0000\u0007\b\u0006\u0001"+
-		"\uffff\uffff\u0000\b\t\u0005\u0002\u0000\u0000\t\u000f\u0001\u0000\u0000"+
-		"\u0000\n\u000b\n\u0002\u0000\u0000\u000b\f\u0005\u0001\u0000\u0000\f\u000e"+
-		"\u0003\u0002\u0001\u0003\r\n\u0001\u0000\u0000\u0000\u000e\u0011\u0001"+
-		"\u0000\u0000\u0000\u000f\r\u0001\u0000\u0000\u0000\u000f\u0010\u0001\u0000"+
-		"\u0000\u0000\u0010\u0003\u0001\u0000\u0000\u0000\u0011\u000f\u0001\u0000"+
-		"\u0000\u0000\u0001\u000f";
+		"\u0004\u0001\u0007\u0013\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
+		"\u0002\u0002\u0007\u0002\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0002\u0001\u0002"+
+		"\u0001\u0002\u0001\u0002\u0001\u0002\u0000\u0000\u0003\u0000\u0002\u0004"+
+		"\u0000\u0000\u000f\u0000\u0006\u0001\u0000\u0000\u0000\u0002\t\u0001\u0000"+
+		"\u0000\u0000\u0004\u000e\u0001\u0000\u0000\u0000\u0006\u0007\u0003\u0002"+
+		"\u0001\u0000\u0007\b\u0005\u0000\u0000\u0001\b\u0001\u0001\u0000\u0000"+
+		"\u0000\t\n\u0005\u0003\u0000\u0000\n\u000b\u0005\u0001\u0000\u0000\u000b"+
+		"\f\u0003\u0004\u0002\u0000\f\r\u0005\u0002\u0000\u0000\r\u0003\u0001\u0000"+
+		"\u0000\u0000\u000e\u000f\u0005\u0005\u0000\u0000\u000f\u0010\u0005\u0004"+
+		"\u0000\u0000\u0010\u0011\u0005\u0006\u0000\u0000\u0011\u0005\u0001\u0000"+
+		"\u0000\u0000\u0000";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
