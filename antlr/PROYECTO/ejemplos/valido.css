@@ -1,0 +1,47 @@
+@import url("reset.css");
+
+:root {
+    --color-principal: #336699;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+.contenedor {
+    display: flex;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.contenedor > .tarjeta {
+    flex: 1;
+    padding: 1rem;
+}
+
+.tarjeta:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+a[target="_blank"]::after {
+    content: " ↗";
+}
+
+@media (max-width: 600px) {
+    .contenedor {
+        flex-direction: column;
+    }
+}
+
+@keyframes aparecer {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@font-face {
+    font-family: "MiFuente";
+    src: url("mifuente.woff2");
+}
